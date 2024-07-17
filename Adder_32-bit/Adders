@@ -1,27 +1,23 @@
 Để cải thiện tài nguyên khi thực hiện một bộ cộng 32-bit bằng kỹ thuật số, ta có thể xem xét các phương pháp tối ưu hóa khác nhau. Một số phương pháp thông dụng bao gồm:
 
 Kỹ thuật Ripple Carry Adder (RCA):
+  Đơn giản và dễ triển khai.
+  Bộ cộng kiểu này sử dụng một loạt các bộ cộng toàn phần (full adders) nối tiếp nhau.
+  Nhược điểm chính là tốc độ chậm, vì thời gian tính toán phụ thuộc vào số bit (thời gian truyền bit nhớ).
 
-Đơn giản và dễ triển khai.
-Bộ cộng kiểu này sử dụng một loạt các bộ cộng toàn phần (full adders) nối tiếp nhau.
-Nhược điểm chính là tốc độ chậm, vì thời gian tính toán phụ thuộc vào số bit (thời gian truyền bit nhớ).
 Kỹ thuật Carry Look-Ahead Adder (CLA):
+  Tăng tốc độ tính toán bằng cách dự đoán bit nhớ (carry) trước khi thực sự tính toán chúng.
+  Sử dụng nhiều tài nguyên hơn so với RCA, nhưng cải thiện tốc độ tính toán đáng kể.
 
-Tăng tốc độ tính toán bằng cách dự đoán bit nhớ (carry) trước khi thực sự tính toán chúng.
-Sử dụng nhiều tài nguyên hơn so với RCA, nhưng cải thiện tốc độ tính toán đáng kể.
 Kỹ thuật Carry Select Adder (CSLA):
+  Chia bộ cộng thành các khối nhỏ và tính toán hai kết quả song song (một với bit nhớ là 0 và một với bit nhớ là 1).
+  Sau đó chọn kết quả cuối cùng dựa trên giá trị bit nhớ thực tế.
+  Tốc độ nhanh hơn so với RCA nhưng sử dụng tài nguyên nhiều hơn CLA.
 
-Chia bộ cộng thành các khối nhỏ và tính toán hai kết quả song song (một với bit nhớ là 0 và một với bit nhớ là 1).
-Sau đó chọn kết quả cuối cùng dựa trên giá trị bit nhớ thực tế.
-Tốc độ nhanh hơn so với RCA nhưng sử dụng tài nguyên nhiều hơn CLA.
 Kỹ thuật Carry Skip Adder (CSA):
+  Kết hợp giữa RCA và CLA, bằng cách bỏ qua các nhóm bit mà không có bit nhớ.
+  Cải thiện tốc độ mà vẫn tiết kiệm tài nguyên.
 
-Kết hợp giữa RCA và CLA, bằng cách bỏ qua các nhóm bit mà không có bit nhớ.
-Cải thiện tốc độ mà vẫn tiết kiệm tài nguyên.
 Kỹ thuật Carry Save Adder (CSA):
-
-Thường được sử dụng trong các thiết kế nhân (multipliers) và bộ cộng nhiều đầu vào.
-Tính toán nhanh chóng bằng cách tiết kiệm bit nhớ mà không cần truyền từng bit nhớ qua từng bước tính toán.
-Module sử dụng kĩ thuật CLA (Carry Look-Ahead Adder):
-
-Để thực hiện kỹ thuật CLA, bạn cần tạo các module bổ sung để tính toán các bit nhớ trước. Đây là một cách tối ưu để cải thiện tốc độ mà không tiêu tốn quá nhiều tài nguyên.
+  Thường được sử dụng trong các thiết kế nhân (multipliers) và bộ cộng nhiều đầu vào.
+  Tính toán nhanh chóng bằng cách tiết kiệm bit nhớ mà không cần truyền từng bit nhớ qua từng bước tính toán.
