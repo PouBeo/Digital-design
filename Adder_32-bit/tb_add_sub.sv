@@ -5,13 +5,12 @@ module tb_add_sub_32_bits ;
 
   addsub_32_bits uut (
     .A( A ),
-	 .B( B ),
+    .B( B ),
     .add_sub( sel ),
     .S( S ),
     .V( V ));
 
   task tk_expect(input logic [31:0] S_x );
-
     $display("[%3d] a_i = %10h, b_i = %10h,  sel_i = %7d, S_expect = %10h, S_result = %10h", $time, A, B, sel, S_x, S ); 
     assert( (S_x == S)) else begin
       $display("TEST FAILED");
