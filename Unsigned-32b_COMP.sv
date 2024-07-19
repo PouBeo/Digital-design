@@ -1,35 +1,6 @@
 `include "D:/BKU/CTMT/2011919_Processor/ALU.sv"  
 
-module BRCOMP(
-  input  logic [31:0]  rs1_data_i,
-  input  logic [31:0]  rs2_data_i,
-  input  logic  br_unsigned_i,
-  output logic  br_less_o,
-  output logic  br_equal_o
-);
-  logic [31:0] sub_result ;
-  logic  slt_temp ;
-  logic sltu_temp ;
-  logic bg_u, sl_u, eq_u;
-  
-  addsub_32b BRCOMP_SUB (.A( rs1_data_i ), .B( rs2_data_i ), .add_sub( 1'b1 ), .S( sub_result ), .carry_o( sltu_temp ));
-  set_less_than BRCOMP_SLT (.s_in1( rs1_data_i[31] ), .s_in2( rs2_data_i[31] ), .s_sub( sub_result[31] ), .slt( slt_temp ));
-  comparator_32b_io BRCOMP_EQ  (.A( rs1_data_i ), .B( rs2_data_i ), .AbgB_i( 1'b0 ), .AslB_i( 1'b0 ), .AeqB_i( 1'b1 ), .AbgB_o( bg_u ), .AslB_o( sl_u ), .AeqB_o( eq_u ));
 
-  assign br_equal_o = eq_u ; // if A = B, both unsigned or signed can be found y comparator
-  
-  always_comb begin: UNSIGN
-    if ( br_unsigned_i ) begin
-      br_less_o = sltu_temp ; // when br_unsigned_i = 1, br_less_o can be assigned by sl_u from comparator instead
-      end
-    else begin
-      br_less_o = slt_temp ;
-      end
-  end  
-  
-endmodule: BRCOMP
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////
 // This is the |...| comparator: unsign
 module comparator_4b(
   input  logic [ 3:0] A, B,
