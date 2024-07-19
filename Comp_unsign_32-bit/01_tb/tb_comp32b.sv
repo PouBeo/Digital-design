@@ -8,9 +8,9 @@ module tb_COMP_U;
 
   comparator_32b_io BRCOMP_EQ  (
     .A( a_i ),
-	 .B( b_i ),
-	 .AbgB_i( 1'b0 ), .AslB_i( 1'b0 ), .AeqB_i( 1'b1 ),
-	 .AbgB_o( bg_o ), .AslB_o( sl_o ), .AeqB_o( eq_o ));
+    .B( b_i ),
+    .AbgB_i( 1'b0 ), .AslB_i( 1'b0 ), .AeqB_i( 1'b1 ),
+    .AbgB_o( bg_o ), .AslB_o( sl_o ), .AeqB_o( eq_o ));
 
   task tk_expect( bg_x, eq_x, sl_x );
     $display("[%10d] a_i = %10h, b_i = %10h, bg_x = %2h, bg_o = %2h   ", $time, a_i, b_i, bg_x, bg_o );
